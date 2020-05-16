@@ -22,3 +22,9 @@ body,
   margin-bottom: 15px;
   font-size: 12px;
 }
+
+/*级联选择器的高度*/
+.el-cascader-panel {
+  height: 220px;
+  top: 200px
+}
