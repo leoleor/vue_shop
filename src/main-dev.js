@@ -39,8 +39,10 @@ axios.interceptors.request.use(config => {
   return config
 })
 // 在request拦截器中，隐藏进度条Nprogress.done()
-axios.interceptors.request.use(config => {
+axios.interceptors.response.use(config => {
+
   NProgress.done()
+
   return config
 })
 
