@@ -9,7 +9,9 @@
 
     <!-- 卡片视图区 -->
     <el-card>
-      <el-table :data=rightsList border stripe>
+      <tableVue :tableColumns=tableColumns :tableData="rightsList">
+      </tableVue>
+      <!-- <el-table :data=rightsList border stripe>
         <el-table-column type="index" label="#"></el-table-column>
         <el-table-column label="权限名称" prop="authName"></el-table-column>
         <el-table-column label="路径" prop="path"></el-table-column>
@@ -20,7 +22,7 @@
             <el-tag type="warning" v-else>三级</el-tag>
           </template>
         </el-table-column>
-      </el-table>
+      </el-table> -->
     </el-card>
   </div>
 </template>
@@ -29,6 +31,12 @@
 export default {
   data () {
     return {
+      // 表头
+      tableColumns: [
+        { label: '权限名称', field: 'authName' },
+        { label: '路径', field: 'path' },
+        { label: '权限等级', field: 'level' }
+      ],
       // 权限列表
       rightsList: []
     }
@@ -36,16 +44,20 @@ export default {
   created () {
     // 获取所有权限
     this.getRightsList()
+    this.test()
   },
   methods: {
     // 获取权限列表
     async getRightsList () {
       const { data: res } = await this.$http.get('rights/list')
       if (res.meta.status !== 200) {
-        return this.$message.error('获取权限列表失败！')
+        return this.$message.error(res.meta.msg)
       }
       this.rightsList = res.data
-
+    },
+    async test () {
+      const { data: res } = await this.$http.get('rights/list')
+      // console.log(this.configTable)
     }
   }
 }

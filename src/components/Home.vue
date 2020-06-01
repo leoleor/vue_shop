@@ -4,7 +4,7 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img src="../assets/heima.png" alt="">
+        <img src="../assets/logo.png" alt="">
         <span>电商后台管理系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
@@ -117,6 +117,9 @@ export default {
     align-items: center;
     span {
       margin-left: 15px;
+    }
+    img {
+      height: 55px;
     }
   }
 }
